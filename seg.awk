@@ -9,7 +9,6 @@ BEGIN {
 
 (FNR == 1) {
 	print FILENAME
-
 	current_segment="front"
 }
 
