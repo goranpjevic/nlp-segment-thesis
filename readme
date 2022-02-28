@@ -1,0 +1,5 @@
+                               nlp-segment-thesis
+
+segment a thesis xml file into its components.
+
+the natural language processing is done using regular expressions.
