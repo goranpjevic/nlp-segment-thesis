@@ -11,7 +11,6 @@ BEGIN {
 
 /p xml:id=\"/{
 	print $3 ": " current_segment toupper($5)
-	# language is in $5
 	if (tolower($7) ~ /^([0-9]* *)?(povzetek|abstract)$/) {
 		current_segment="abstract"
 	} else if (tolower($7) ~ /^([0-9]* *)?(ključne besede|key ?words)$/) {
