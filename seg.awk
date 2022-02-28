@@ -24,7 +24,7 @@ BEGIN {
 	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo|table of contents)$/) {
 		current_segment="toc"
 		printf "chapter %s ", $7
-	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo kratic|table of key ?words)$/) {
+	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo kratic|table of (key ?words|abbreviations))$/) {
 		current_segment="toa"
 		printf "chapter %s ", $7
 	} else if (tolower($7) ~ /^([0-9]* *)?(uvod|introduction)$/) {
