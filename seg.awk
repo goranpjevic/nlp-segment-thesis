@@ -29,10 +29,10 @@ BEGIN {
 	} else if (tolower($7) ~ /(uvod|introduction)$/) {
 		current_segment="body"
 		printf "chapter UVOD"
-	} else if (tolower($7) ~ /^([0-9]* *)?(zaključ.+|sklep.?|conclusion.?)$/) {
+	} else if (tolower($7) ~ /^([0-9]* *)?(zaključ[a-z]+|sklep[a-z]?|conclusion[a-z]?)$/) {
 		current_segment="conclusion"
 		printf "chapter %s ", $7
-	} else if (tolower($7) ~ /^([0-9]* *)?(seznam virov|viri|prilog.*|source.*)$/) {
+	} else if (tolower($7) ~ /^([0-9]* *)?(seznam virov|viri|prilog[a-z]*|source[a-z]*)$/) {
 		current_segment="back"
 		printf "chapter %s ", $7
 	} else if ($7 ~ /^([0-9\.]* )+[A-Z ]+$/) {
