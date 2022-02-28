@@ -10,21 +10,32 @@ BEGIN {
 }
 
 /p xml:id=\"/{
-	print $3 ": " current_segment toupper($5)
+	printf "%s ", $3
 	if (tolower($7) ~ /^([0-9]* *)?(povzetek|abstract)$/) {
 		current_segment="abstract"
+		printf "chapter %s ", $7
 	} else if (tolower($7) ~ /^([0-9]* *)?(ključne besede|key ?words)$/) {
 		current_segment="keywords"
+		printf "chapter %s ", $7
 	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo|table of contents)$/) {
 		current_segment="toc"
+		printf "chapter %s ", $7
 	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo kratic|table of key ?words)$/) {
 		current_segment="toa"
+		printf "chapter %s ", $7
 	} else if (tolower($7) ~ /^([0-9]* *)?(uvod|introduction)$/) {
 		current_segment="body"
+		printf "chapter %s ", $7
 	} else if (tolower($7) ~ /^([0-9]* *)?(zaključ.+|sklep.?|conclusion.?)$/) {
 		current_segment="conclusion"
+		printf "chapter %s ", $7
 	} else if (tolower($7) ~ /^([0-9]* *)?(seznam virov|viri|prilog.*|source.*)$/) {
 		current_segment="back"
+		printf "chapter %s ", $7
+	} else {
+		printf "%s%s ", current_segment, toupper($5)
 	}
+
+	printf "\n"
 
 }
