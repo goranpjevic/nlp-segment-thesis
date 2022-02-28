@@ -35,7 +35,7 @@ BEGIN {
 	} else if (tolower($7) ~ /^([0-9]* *)?(seznam virov|viri|prilog.*|source.*)$/) {
 		current_segment="back"
 		printf "chapter %s ", $7
-	} else if (tolower($7) ~ /^([0-9\.]* )+/) {
+	} else if ($7 ~ /^([0-9\.]* )+[A-Z ]+$/) {
 		printf "chapter %s", $7
 	} else {
 		printf "%s%s ", current_segment, toupper($5)
