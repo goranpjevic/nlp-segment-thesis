@@ -26,9 +26,9 @@ BEGIN {
 	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo kratic|table of (key ?words|abbreviations))$/) {
 		current_segment="toa"
 		printf "chapter %s ", $7
-	} else if (tolower($7) ~ /^([0-9]* *)?(uvod|introduction)$/) {
+	} else if (tolower($7) ~ /(uvod|introduction)$/) {
 		current_segment="body"
-		printf "chapter %s ", $7
+		printf "chapter UVOD"
 	} else if (tolower($7) ~ /^([0-9]* *)?(zaključ.+|sklep.?|conclusion.?)$/) {
 		current_segment="conclusion"
 		printf "chapter %s ", $7
