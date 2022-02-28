@@ -1,12 +1,16 @@
 #!/usr/bin/env awk -f
 
 BEGIN {
-	if (ARGC != 2) {
+	if (ARGC == 1) {
 		exit 1
 	}
 	FS="[<>\"]"
 
 	current_segment="front"
+}
+
+(FNR == 1) {
+	print FILENAME
 }
 
 /p xml:id=\"/{
