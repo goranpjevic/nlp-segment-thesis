@@ -12,7 +12,7 @@ BEGIN {
 	current_segment="front"
 }
 
-/p xml:id=\"/{
+/^[ \t]*<p xml:id=\"/{
 	# $3 : paragraph id
 	# $5 : paragraph language
 	# $7 : paragraph contents
