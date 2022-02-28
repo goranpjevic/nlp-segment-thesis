@@ -13,6 +13,9 @@ BEGIN {
 }
 
 /p xml:id=\"/{
+	# $3 : paragraph id
+	# $5 : paragraph language
+	# $7 : paragraph contents
 	printf "%s ", $3
 	if (tolower($7) ~ /^([0-9]* *)?(povzetek|izvleček|abstract)$/) {
 		current_segment="abstract"
