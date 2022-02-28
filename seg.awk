@@ -21,16 +21,16 @@ BEGIN {
 		printf "segment %s", current_segment="abstract"
 	} else if (tolower($7) ~ /^([0-9.]* *)?(ključne besede|key ?words)(:.*)?$/) {
 		printf "segment %s", current_segment="keywords"
-	} else if (tolower($7) ~ /^([0-9.]* *)?(kazalo|table of contents)/) {
+	} else if (tolower($7) ~ /^([0-9.]* *)?(kazalo)/) {
 		printf "segment %s", current_segment="toc"
-	} else if (tolower($7) ~ /^([0-9.]* *)?(kazalo kratic|kratice( in akronimi)|table of (key ?words|abbreviations))$/) {
+	} else if (tolower($7) ~ /^([0-9.]* *)?(kazalo kratic|kratice( in akronimi))$/) {
 		printf "segment %s", current_segment="toa"
-	} else if (tolower($7) ~ /(uvod|introduction)$/) {
+	} else if (tolower($7) ~ /(uvod)$/) {
 		current_segment="body"
 		printf "chapter UVOD"
-	} else if (tolower($7) ~ /^([0-9.]* *)?(zaključ[a-z]+|sklep[a-z]*( misli)?|conclusion[a-z]?)$/) {
+	} else if (tolower($7) ~ /^([0-9.]* *)?(zaključ[a-z]+|sklep[a-z]*( misli)?)$/) {
 		printf "segment %s", current_segment="conclusion"
-	} else if (tolower($7) ~ /^([0-9.]* *)?((seznam )?vir(i|ov)|prilog(a|e)( [0-9]+: .+)?|(uporabljena )?literatura( in viri)?|source[a-z]*)$/) {
+	} else if (tolower($7) ~ /^([0-9.]* *)?((seznam )?vir(i|ov)|prilog(a|e)( [0-9]+: .+)?|(uporabljena )?literatura( in viri)?)$/) {
 		current_segment="back"
 		printf "chapter %s ", $7
 	} else if ($7 ~ /^([0-9\.]* )+[A-Z][A-Za-z ]+$|Poglavje [0-9]+[ :]+[A-Za-z ]+$/) {
