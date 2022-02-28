@@ -18,23 +18,18 @@ BEGIN {
 	# $7 : paragraph contents
 	printf "%s ", $3
 	if (tolower($7) ~ /^([0-9.]* *)?(povzetek|izvleček|abstract)$/) {
-		current_segment="abstract"
-		printf "segment abstract"
+		printf "segment %s", current_segment="abstract"
 	} else if (tolower($7) ~ /^([0-9.]* *)?(ključne besede|key ?words)(:.*)?$/) {
-		current_segment="keywords"
-		printf "segment keywords"
+		printf "segment %s", current_segment="keywords"
 	} else if (tolower($7) ~ /^([0-9.]* *)?(kazalo|table of contents)/) {
-		current_segment="toc"
-		printf "segment toc"
+		printf "segment %s", current_segment="toc"
 	} else if (tolower($7) ~ /^([0-9.]* *)?(kazalo kratic|kratice( in akronimi)|table of (key ?words|abbreviations))$/) {
-		current_segment="toa"
-		printf "segment %s ", $7
+		printf "segment %s", current_segment="toa"
 	} else if (tolower($7) ~ /(uvod|introduction)$/) {
 		current_segment="body"
 		printf "chapter UVOD"
 	} else if (tolower($7) ~ /^([0-9.]* *)?(zaključ[a-z]+|sklep[a-z]*( misli)?|conclusion[a-z]?)$/) {
-		current_segment="conclusion"
-		printf "segment conclusion"
+		printf "segment %s", current_segment="conclusion"
 	} else if (tolower($7) ~ /^([0-9.]* *)?((seznam )?vir(i|ov)|prilog(a|e)( [0-9]+: .+)?|(uporabljena )?literatura( in viri)?|source[a-z]*)$/) {
 		current_segment="back"
 		printf "segment %s ", $7
