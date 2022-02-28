@@ -10,9 +10,9 @@ BEGIN {
 }
 
 /p xml:id=\"/{
-	print $3 ": " current_segment
+	print $3 ": " current_segment toupper($5)
 	# language is in $5
-	if (tolower($7) ~ /povzetek/) {
-		current_segment="abstract" toupper($5)
+	if (tolower($7) ~ /povzetek|abstract/) {
+		current_segment="abstract"
 	}
 }
