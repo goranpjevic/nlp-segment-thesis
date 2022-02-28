@@ -20,7 +20,7 @@ BEGIN {
 	} else if (tolower($7) ~ /^([0-9]* *)?(ključne besede|key ?words)(:.*)?$/) {
 		current_segment="keywords"
 		printf "segment keywords"
-	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo|table of contents)$/) {
+	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo|table of contents)/) {
 		current_segment="toc"
 		printf "segment toc"
 	} else if (tolower($7) ~ /^([0-9]* *)?(kazalo kratic|table of (key ?words|abbreviations))$/) {
