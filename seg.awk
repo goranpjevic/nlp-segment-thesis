@@ -35,7 +35,5 @@ BEGIN {
 	} else {
 		printf "%s%s ", current_segment, toupper($5)
 	}
-
 	printf "\n"
-
 }
