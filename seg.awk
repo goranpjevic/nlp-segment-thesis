@@ -36,7 +36,10 @@ BEGIN {
 	} else if ($7 ~ /^([0-9\.]* )+[A-Z][A-Za-z ]+$|Poglavje [0-9]+[ :]+[A-Za-z ]+$/) {
 		printf "chapter %s", $7
 	} else {
-		printf "%s%s ", current_segment, toupper($5)
+		printf "%s ", current_segment
+		if (current_segment == "abstract" || current_segment == "keywords") {
+			printf "%s ", toupper($5)
+		}
 	}
 	printf "\n"
 }
