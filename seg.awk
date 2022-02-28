@@ -5,12 +5,12 @@ BEGIN {
 		exit 1
 	}
 	FS="[<>\"]"
-
-	current_segment="front"
 }
 
 (FNR == 1) {
 	print FILENAME
+
+	current_segment="front"
 }
 
 /p xml:id=\"/{
