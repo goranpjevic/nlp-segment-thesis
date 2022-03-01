@@ -30,10 +30,10 @@ BEGIN {
 		printf "chapter UVOD"
 	} else if (tolower($7) ~ /^([0-9\.]* *)?(zaključ[a-z]+|sklep[a-z]*( misli)?)$/) {
 		printf "segment %s", current_segment="conclusion"
-	} else if (tolower($7) ~ /^([0-9\.]* *)?((seznam )?vir(i|ov)|prilog(a|e)( [0-9]+: .+)?|(uporabljena )?literatura( in viri)?)$/) {
+	} else if (tolower($7) ~ /^([0-9\.]* *)?((seznam )?(uporabljen(a|e|ih) )?((literatur(a|e)|vir(i|ov)) ?(in )?)+|prilog(a|e)( .+: .+)?)$/) {
 		current_segment="back"
 		printf "chapter %s ", $7
-	} else if ($7 ~ /^([0-9\.]* )+[A-Z][A-Za-z ]+$|Poglavje [0-9]+([ :]+[A-Za-z ]+)?$/) {
+	} else if ($7 ~ /^[0-9\.]+ *[A-ZČŠŽ][A-ZČŠŽa-zčšž0-9 ]+$|Poglavje [0-9]+([ :]+[A-ZČŠŽa-zčšž0-9 ]+)?$/) {
 		printf "chapter %s", $7
 	} else {
 		printf "%s ", current_segment
