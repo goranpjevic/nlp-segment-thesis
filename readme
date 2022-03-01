@@ -1,5 +1,7 @@
                                nlp-segment-thesis
 
-segment a thesis xml file into its components.
+segment a thesis xml file in the slovenian language into its components.
+
+the xml example files for the theses can be found at https://nl.ijs.si/kas/.
 
 the natural language processing is done using regular expressions.
